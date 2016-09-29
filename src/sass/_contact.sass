@@ -1,0 +1,60 @@
+.contact
+  position: absolute
+  top: 50%
+  left: 50px
+  width: 100%
+  transform: translateY(-50%)
+
+.email-addr
+  font-size: 36px
+  &:hover .email-addr-text
+    color: #1AB79B
+
+.email-addr-text
+  color: #454545 
+  transition: all 0.25s
+  &.remove
+    opacity: 0
+
+.sns 
+  position: relative
+  margin-top: 278px
+  padding-top: 24px
+  &::before
+    content: ''
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    border-top: 1px solid #454545
+    width: 0px
+    height: 1px
+    transition: width 0.25s
+  &.show::before
+    width: 230px
+  li
+    margin-bottom: 12px
+  a
+    display: block
+    opacity: 0
+    font-size: 18px
+    color : #454545
+    transition: all 0.25s
+    &.show
+      opacity: 1
+    &:hover.show
+      color: #1AB79B
+
+span[class^="icon__"]
+  display: inline-block
+  width: 24px
+  height: 24px
+  background-size: 24px 24px
+  margin-right: 12px
+  vertical-align: top
+
+.icon__github
+  background-image: url('../img/icon__github.svg')
+.icon__twitter 
+  background-image: url('../img/icon__twitter.svg')
+

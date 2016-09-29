@@ -1,0 +1,93 @@
+.home-desc
+  position: absolute
+  top: 50%
+  left: 50px 
+  width: 380px
+  transform: translateY(-50%)
+  p
+    font-size: 36px
+    o
+
+  p[class^="home-desc-"]
+    opacity: 0
+    transition: all 1.5s cubic-bezier(.87,-.41,.19,1.44)
+    transform: translate(10%, 15%)
+    line-height: 1
+    &.show
+      opacity: 1
+      transform: translate(0, 0)
+
+
+
+// --------------------
+// svg animation 
+// --------------------
+
+%app-home-desc-show
+    animation: dash 1s linear
+    animation-fill-mode: forwards
+    opacity: 1
+
+.svg-container
+  display: block
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%) scale(1)
+  transition: all 1s cubic-bezier(.87,-.41,.19,1.44)
+  &.remove
+    transform: translate(-50%, -50%) scale(0)
+    opacity: 0
+  g, path
+    position: absolute
+    fill: none
+    stroke: #232323
+    stroke-width: 10
+    stroke-miterlimit: 10
+    opacity: 0
+    // transition: all 0.25s
+  .st-0
+    fill: #fff    
+    stroke: none
+    transform: translate(5px, 5px)
+    transition: all 0.25s
+    &.show
+      opacity: 1
+
+  .st-1
+    &.show
+      @extend %app-home-desc-show
+      stroke-dasharray: 1525px
+      stroke-dashoffset: 1525px
+
+  .st-2
+    transform: translate(20px,80px)
+    &.show
+      @extend %app-home-desc-show
+      stroke-dasharray: 2000
+      stroke-dashoffset: 2000
+    
+  .st-3
+    transform: translateY(220px) translateX(82px)
+    &.show
+      @extend %app-home-desc-show
+      stroke-dasharray: 501px
+      stroke-dashoffset: 501px
+      transition: transform 0.25s
+  .st-4
+    transform: translate(200px,400px)
+    &.show
+      animation: dash 0.5s linear
+      animation-fill-mode: forwards
+      opacity: 1
+      stroke-dasharray: 82px
+      stroke-dashoffset: 82px
+      transition: transform 0.25s
+
+      
+
+@keyframes dash
+    // from
+    //   stroke-dashoffset: 2000
+    to
+      stroke-dashoffset: 0

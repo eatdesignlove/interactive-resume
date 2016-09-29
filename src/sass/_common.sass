@@ -1,0 +1,90 @@
+.a11y-hidden
+  height: 1px
+  width: 0px
+  margin-top: -1px
+  visibility: hidden
+
+::selection
+  background: #454545
+  color #fff
+
+body
+.wrap
+  position: absolute
+  top: 0
+  left: 0
+  right: 0 
+  bottom: 0
+  background: #fff
+  color: #232323
+  border: 20px solid #1AB79B
+  // background-color: #1AB79B
+  // color: #fff
+  font-family: "Proxima Nova Alt", sans-serif
+  overflow: hidden
+  transition: all 1.5s
+ul
+  list-style: none
+a
+  text-decoration: none
+
+.app-header
+  position: absolute
+  top: 50%
+  left: -300px
+  z-index: 100
+  width: 300px
+  transition: all 0.25s
+  .app-logo
+    font-size: 48px
+    span
+      display: block
+      font-size: 18px
+      padding-left: 6px
+  &.show-1
+    left: 50px
+  &.show-2
+    top: 50px
+
+.app-menu
+  position: absolute
+  right: -100%
+  top: 50%
+  transition: all 1s ease-out
+  transform: translateY(-50%)
+  z-index: 20
+  &.show
+    right: 0
+  li a
+    position: relative
+    display: block
+    padding: 18px 0 
+    text-align: right
+    color: #232323
+    &::after
+      float: right
+      display: block
+      content: ''
+      width: 0px
+      height: 4px
+      margin-top: 10px
+      margin-left: 14px
+      margin-right: 24px
+      transition: all 0.15s
+    &:hover::after,
+    &.active::after
+      float: right
+      display: block
+      content: ''
+      width: 50px
+      height: 4px
+      margin-left: 14px
+      background: #232323
+
+.app-section
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 10

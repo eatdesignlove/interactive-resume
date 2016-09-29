@@ -1,0 +1,14 @@
+.email-addr {
+  font-size: 36px; }
+
+span[class^="icon__"] {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover; }
+
+.icon__github {
+  background-image: url("./src/img/icon__github.png"); }
+
+.icon__twitter {
+  background-image: url("./src/img/icon__twitter.png"); }
