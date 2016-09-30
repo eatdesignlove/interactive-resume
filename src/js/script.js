@@ -299,11 +299,10 @@
   var add_event_to_menu = function(){
     menu_home.addEventListener('click', function(){
       console.log(this);
-
       if (nowLocation !== '#home') {
-        if (!!contact.close_contact) { contact.close_contact() }
         if (!!skills.close_skills) { skills.close_skills() }
         if (!!project.close_project) { project.close_project() }
+        if (!!contact.close_contact) { contact.close_contact() }
 
         setTimeout(function(){
           $(container).load("./src/views/home.html", function(){
@@ -335,8 +334,9 @@
       console.log(this);
 
       if (nowLocation !== '#projects') {
-        if (!!contact.close_contact) { contact.close_contact() }
+        if (!!home.close_home) { home.close_home() }
         if (!!skills.close_skills) { skills.close_skills() }
+        if (!!contact.close_contact) { contact.close_contact() }
         setTimeout(function(){
           $(container).load("./src/views/home.html", function(){
             home();
