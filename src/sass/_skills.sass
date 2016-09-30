@@ -5,15 +5,18 @@
 
   .title
     position: absolute
-    top: 20% 
+    top: 50% 
     left: 0
     width: 100%
     font-size: 36px
     text-align: center
     opacity: 0
     transition: all 0.25s
+    transform: translateY(-50%)
     &.show
       opacity: 1
+    &.move
+      top: 20%
 
 a[class^="skill-"]
   display: block
@@ -25,27 +28,29 @@ a[class^="skill-"]
   z-index: 10
   border-radius: 50%  
   background: #fff
-  border: 2px solid #454545
+  border: 6px solid #454545
   text-align: center
   font-size: 18px
   color: #454545
   line-height: 150px
-  transition: all 0.4s cubic-bezier(.87,-.41,.19,1.44)
+  transition: all 1.2s cubic-bezier(.87,-.41,.19,1.44)
   transform: scale(1)
   box-shadow: 0 0 10px rgba(0,0,0,0.1)
   animation-name: movingBall 
   animation-duration: 5s 
   animation-iteration-count: infinite;
-
+  opacity: 0
+  &.show
+    opacity: 1
   &:hover,
   &:focus
-    border-width: 4px
+    border-width: 6px
     transform: scale(1.5)
     z-index: 50
     cursor: pointer
     outline: none
-    background: #232323
-    border-color: #000
+    background: #8985FF
+    // border-color: #465DC6
     color: #fff
   &.remove
     transform: scale(0)

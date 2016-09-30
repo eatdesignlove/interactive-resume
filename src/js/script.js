@@ -12,11 +12,26 @@
   var winWidth, winHeight;
 
   // app-menu list
-  var menus = document.querySelectorAll('.app-menu a');
-  var menu_home = document.querySelector('.link__home');
-  var menu_skill = document.querySelector('.link__skills');
-  var menu_project = document.querySelector('.link__projects');
-  var menu_contact = document.querySelector('.link__contact');
+  var menus, menu_home, menu_skill, menu_project, menu_contact;
+  var setMenuFunc = function() {
+    menus = document.querySelectorAll('.app-menu a');
+    menu_home = document.querySelector('.link__home');
+    menu_skill = document.querySelector('.link__skills');
+    menu_project = document.querySelector('.link__projects');
+    menu_contact = document.querySelector('.link__contact');
+  };
+  var setMenuFuncMove = function() {
+    menus = document.querySelectorAll('body > .app-menu a');
+    menu_home = menus[0];
+    menu_skill = menus[1];
+    menu_project = menus[2];
+    menu_contact = menus[3];
+    console.log(menu_home)
+  };
+  setMenuFunc();
+
+  // app-main
+  var wrap = document.querySelector('.wrap');
 
   // svg-container
   var svg_cont = document.querySelector('.svg-container');
@@ -32,8 +47,7 @@
       }
     }
   };
-  
-
+    
   var home = function (){
     window.location.hash = '#home';
 
@@ -120,7 +134,6 @@
   }
   
   var contact = function() {
-    var wrap = document.querySelector('.wrap');
     var email_address = document.querySelector('.email-addr-text');
     var sns = document.querySelector('.sns');
     var link_github = document.querySelector('.link__github');
@@ -174,8 +187,8 @@
 
 
     //mastery
-    ball_html['mastery'] = 0.95;
-    ball_css['mastery'] = 0.95;
+    ball_html['mastery'] = 0.90;
+    ball_css['mastery'] = 0.90;
     ball_sass['mastery'] = 0.75;
     ball_javascript['mastery'] = 0.5;
     ball_jquery['mastery'] = 0.5;
@@ -185,115 +198,178 @@
     ball_illustrator['mastery'] = 0.8;
     ball_sketch['mastery'] = 0.5;
 
-    setTimeout(function(){ $(title).addClass('show') }, 500);
-    
-    for (var l = balls.length-1; 0 <= l; l-- ) {
-      console.log(l, balls[l]);
-      var ball = balls[l];
-      ball.posX = Math.random() * width;
-      ball.posY = Math.random() * height;
-      $(ball).css({
-          'top': ball.posY,
-          'left': ball.posX,
-          'width': 300 * ball.mastery,
-          'height': 300 * ball.mastery,
-          'line-height': 300 * ball.mastery +'px',
-          'animation-duration': Math.random() * 20 + 4 + 's'
-      });
-    }
-    console.log('balls:', balls);
-    setInterval( function(){
-      var index = parseInt(Math.random() * 10);
-      // console.log(index)
-      $(balls[index]).focus();
-    } , 1000 );
+    var setBall = function() {
+      for (var l = balls.length-1; 0 <= l; l-- ) {
+        var ball = balls[l];
+        ball.posX = Math.random() * width;
+        ball.posY = Math.random() * height;
+        $(ball).css({
+            'top': ball.posY,
+            'left': ball.posX,
+            'width': 300 * ball.mastery,
+            'height': 300 * ball.mastery,
+            'line-height': 300 * ball.mastery - 10 +'px',
+            'animation-duration': Math.random() * 20 + 4 + 's',
 
+        }).addClass('show');
+
+      }
+      setInterval( function(){
+        var index = parseInt(Math.random() * 10);
+        $(balls[index]).focus();
+        $(title).shuffleLetters({
+          "text": balls[index].text + ' : '+ balls[index].mastery * 100 + '%'
+        }); 
+      } , 1500 );
+    }
+    
     var close_skills = function(){
       setTimeout(function(){ $(title).removeClass('show') }, 500);
       for (var l = balls.length-1; 0 <= l; l-- ) {
-        console.log(l, balls[l]);
+        // console.log(l, balls[l]);
         var ball = balls[l];
         $(ball).addClass('remove');
       }
     }
 
+    setTimeout(function(){ $(title).addClass('show') }, 500);
+    setTimeout(function(){ $(title).addClass('move') }, 1250);
+    setTimeout(setBall, 1500);
+
     // 외부로 노출
     skills.close_skills = close_skills;
-
   }
 
+  var project = function(){
+    var proejct_list = document.querySelector('.project-list');
 
-  menu_home.addEventListener('click', function(){
-    if (nowLocation !== '#home') {
-      if (!!contact.close_contact) { contact.close_contact() }
-      if (!!skills.close_skills) { skills.close_skills() }
-
-      setTimeout(function(){
-        $(container).load("./src/views/home.html", function(){
-          home();
-          menu_activation();
-        });
-      }, 1750);  
-    }
-  });
-
-  menu_skill.addEventListener('click', function(){
-    if (nowLocation !== '#skills') {
-      if (!!home.close_home) { home.close_home() }
-      if (!!contact.close_contact) { contact.close_contact() }
-
-      setTimeout(function(){
-        $(container).load("./src/views/skills.html", function(){
-          skills();
-          menu_activation();
-        });
-      }, 1750);
-    }
-  });
-  
-  menu_project.addEventListener('click', function(){
-    if (nowLocation !== '#projects') {
-      if (!!home.close_home) { home.close_home() }
-      if (!!contact.close_contact) { contact.close_contact() }
-      if (!!skills.close_skills) { skills.close_skills() }
-
-      setTimeout(function(){
-        home.close_home();
-        $(container).load("./src/views/projects.html", function(){
-          menu_activation();
-        });
-      }, 1750);
-    }
-  });
-
-  menu_contact.addEventListener('click', function(){
-    if (!!home.close_home) { home.close_home() }
-    if (!!skills.close_skills) { skills.close_skills() }
-
-    if (nowLocation !== 'contact') {
-      home.close_home();
-      setTimeout(function(){
-        $(container).load("./src/views/contact.html", function(){
-          contact();
-          menu_activation();
-        });
-      }, 1750);
-    }
+    $(proejct_list).css('transform','scale(0.5)');
+    $(wrap).css('margin-bottom','72px');
+    var copy_menu = $(app_menu).clone().removeClass('show');
+    var copy_header = $(app_header).clone();
+    var section_title = '<h2 class="a11y-hidden">Projects</h2>'
+    copy_menu.appendTo('body');
+    copy_header.appendTo('body');
+    $(section_title).prependTo(proejct_list);
+    setTimeout(function(){ copy_menu.addClass('show') }, 500)
+    setTimeout(function(){ copy_header.addClass('show') }, 500)
     
-  });
+    setMenuFuncMove();
+    add_event_to_menu();
+    window.location.hash = '#projects';
+    $.getJSON('../src/data/project-data.json')
+      .then(function(data, status, XHR){
 
+        var project_template = '';
+        for (var i = 0; data.results[i]; i++ ) {
+          var template = [
+            '<section class="container__project" style="background-image: url('+ data.results[i].thumb +')">',
+              '<a class="link__project" href="'+ data.results[i].url +'" target="_blank">',
+                '<h3 class="title">'+ data.results[i].title +'</h2>',
+                '<p class="description">' + data.results[i].description + '</p>',
+              '</a>',
+            '</section>'
+          ].join('');
+          console.log(data.results[i].thumb)
+          project_template += template;
+        }
+        $(project_template).appendTo('.project-list');
+
+        var project_items = document.querySelectorAll('.container__project');
+        for (var i = 0; project_items[i]; i++) {
+          $(project_items[i]).css('transform', 'translateY('+110 * (i + 1)+'%)')
+        }
+    })
+
+    var close_project = function(){
+      $(proejct_list).css('transform','scale(1)');
+      $(wrap).css('margin-bottom','0');
+
+      copy_menu.removeClass('show').remove();
+      copy_header.removeClass('show').remove();
+      $('.container__project').remove();
+
+      setMenuFunc();
+    }
   
-  $(container).load("./src/views/home.html", function(){
-      home();
-      menu_activation();
+    // 외부로 노출
+    project.close_project = close_project;
+  }
+
+  var add_event_to_menu = function(){
+    menu_home.addEventListener('click', function(){
+      console.log(this);
+
+      if (nowLocation !== '#home') {
+        if (!!contact.close_contact) { contact.close_contact() }
+        if (!!skills.close_skills) { skills.close_skills() }
+        if (!!project.close_project) { project.close_project() }
+
+        setTimeout(function(){
+          $(container).load("./src/views/home.html", function(){
+            home();
+            menu_activation();
+          });
+        }, 1750);  
+      }
     });
 
+    menu_skill.addEventListener('click', function(){
+      console.log(this);
 
+      if (nowLocation !== '#skills') {
+        if (!!home.close_home) { home.close_home() }
+        if (!!contact.close_contact) { contact.close_contact() }
+        if (!!project.close_project) { project.close_project() }
 
+        setTimeout(function(){
+          $(container).load("./src/views/skills.html", function(){
+            skills();
+            menu_activation();
+          });
+        }, 1750);
+      }
+    });
+    
+    menu_project.addEventListener('click', function(){
+      console.log(this);
 
+      if (nowLocation !== '#projects') {
+        if (!!contact.close_contact) { contact.close_contact() }
+        if (!!skills.close_skills) { skills.close_skills() }
+        setTimeout(function(){
+          $(container).load("./src/views/home.html", function(){
+            home();
+            project();
+            menu_activation();
+          });
+        }, 1200);  
+      }
+    });
 
+    menu_contact.addEventListener('click', function(){
+      console.log(this);
 
+      if (!!home.close_home) { home.close_home() }
+      if (!!skills.close_skills) { skills.close_skills() }
+      if (!!project.close_project) { project.close_project() }
+
+      if (nowLocation !== 'contact') {
+        home.close_home();
+        setTimeout(function(){
+          $(container).load("./src/views/contact.html", function(){
+            contact();
+            menu_activation();
+          });
+        }, 1750);
+      }
+    });
+  }
+  
+  add_event_to_menu();
+  $(container).load("./src/views/home.html", function(){
+    home();
+    menu_activation();
+  });
 
 }(this, this.jQuery));
-
-

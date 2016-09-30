@@ -9,6 +9,25 @@
   color #fff
 
 body
+  font-family: "Proxima Nova Alt", sans-serif
+
+  // 프로젝트 화면에서 보여지는 메뉴 및 헤더
+  &>.app-menu,
+  &>.app-header
+    position: fixed
+  &>.app-menu.show,
+  &>.app-header.show
+    transform: translateX(0) translateY(-50%)
+  &>.app-menu
+    width: 180px
+    transform: translateX(200%) translateY(-50%)
+  &>.app-header
+    width: 300px
+    transform: translateX(-200%)
+    .app-logo
+      font-size: 32px
+
+
 .wrap
   position: absolute
   top: 0
@@ -18,11 +37,9 @@ body
   background: #fff
   color: #232323
   border: 20px solid #1AB79B
-  // background-color: #1AB79B
-  // color: #fff
-  font-family: "Proxima Nova Alt", sans-serif
   overflow: hidden
-  transition: all 1.5s
+  transition: all 0.8s ease-in-out
+  box-shadow: 0 0 40px rgba(0,0,0,0.2)
 ul
   list-style: none
 a
@@ -80,6 +97,7 @@ a
       height: 4px
       margin-left: 14px
       background: #232323
+
 
 .app-section
   position: absolute
