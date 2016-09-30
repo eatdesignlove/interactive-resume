@@ -198,7 +198,9 @@ audio, canvas, progress, video {
   background: #454545; }
 
 body {
-  font-family: "Proxima Nova Alt", sans-serif; }
+  font-family: "proxima-nova-alt", sans-serif; }
+  body p, body a {
+    font-family: "proxima-nova-alt", sans-serif; }
   body > .app-menu,
   body > .app-header {
     position: fixed; }
@@ -238,7 +240,7 @@ a {
   top: 50%;
   left: -300px;
   z-index: 100;
-  width: 300px;
+  width: 340px;
   transition: all 0.25s; }
   .app-header .app-logo {
     font-size: 48px; }
