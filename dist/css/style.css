@@ -200,7 +200,8 @@ audio, canvas, progress, video {
 body {
   font-family: "proxima-nova-alt", sans-serif; }
   body p, body a {
-    font-family: "proxima-nova-alt", sans-serif; }
+    font-family: "proxima-nova-alt", sans-serif;
+    font-weight: bold; }
   body > .app-menu,
   body > .app-header {
     position: fixed; }
