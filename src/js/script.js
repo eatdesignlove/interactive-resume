@@ -257,7 +257,7 @@
     setMenuFuncMove();
     add_event_to_menu();
     window.location.hash = '#projects';
-    $.getJSON('interactive-resume/src/data/project-data.json')
+    $.getJSON('/interactive-resume/src/data/project-data.json')
       .then(function(data, status, XHR){
 
         var project_template = '';
