@@ -5,7 +5,7 @@
       "title": "BeRealist",
       "description": "Service Prototype",
       "tag": "",
-      "thumb": "/src/data/thumb/berealist.png",
+      "thumb": "/interactive-resume/src/data/thumb/berealist.png",
       "url": "https://eatdesignlove.github.io/project/berealist"
     },
     {
@@ -13,7 +13,7 @@
       "title": "Material Button Interaction",
       "description": "Interaction Prototype",
       "tag": "",
-      "thumb": "/src/data/thumb/material-button.png",
+      "thumb": "/interactive-resume/src/data/thumb/material-button.png",
       "url": "https://eatdesignlove.github.io/project/material-button"
     }]
 }
