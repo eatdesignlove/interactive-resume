@@ -218,7 +218,7 @@
         var index = parseInt(Math.random() * 10);
         var level = (function(){
           var result = balls[index].mastery * 100;
-          if ( result < 35 ) { result = 'Beinner' };
+          if ( result < 35 ) { result = 'Beginner' };
           if ( result >= 35 && result < 75 ) { result = 'Intermediate' };
           if ( result >= 75 ) { result = 'Advanced' };
           return result;
