@@ -216,11 +216,18 @@
       }
       setInterval( function(){
         var index = parseInt(Math.random() * 10);
+        var level = (function(){
+          var result = balls[index].mastery * 100;
+          if ( result < 35 ) { result = 'Beinner' };
+          if ( result >= 35 && result < 75 ) { result = 'Intermediate' };
+          if ( result >= 75 ) { result = 'Advanced' };
+          return result;
+        })();
         $(balls[index]).focus();
         $(title).shuffleLetters({
-          "text": balls[index].text + ' : '+ balls[index].mastery * 100 + '%'
+          "text": balls[index].text + ' : '+ level
         }); 
-      } , 1500 );
+      } , 2000 );
     }
     
     var close_skills = function(){
